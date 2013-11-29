@@ -21,8 +21,20 @@ import pycurl
 import urllib
 import json
 import oauth2 as oauth
-# get all settings, see http://www.arngarden.com/2012/11/07/consuming-twitters-streaming-api-using-python-and-curl/
-from config import *
+
+API_ENDPOINT_URL = 'https://stream.twitter.com/1.1/statuses/filter.json'
+USER_AGENT = 'TwitterStream 1.0' # This can be anything really
+
+# You need to replace these with your own values
+OAUTH_KEYS = {'consumer_key': <Consumer key>,
+              'consumer_secret': <Consumer secret>,
+              'access_token_key': <Token key>,
+              'access_token_secret': <Token secret>}
+
+# These values are posted when setting up the connection
+POST_PARAMS = {'include_entities': 0,
+               'stall_warning': 'true',
+               'track': 'iphone,ipad,ipod'}
 
 class TwitterStream:
     def __init__(self, timeout=False):
